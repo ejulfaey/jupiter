@@ -18,7 +18,7 @@ class ManageUser extends Component
     public $isEdit = false;
 
     // Form parameter
-    public $user;
+    public $userId;
     public $name;
     public $email;
     public $gender;
@@ -60,7 +60,12 @@ class ManageUser extends Component
     public function openModal($user = null)
     {
         if ($user) {
-            $this->user = $user;
+            $user = json_decode($user);
+            $this->userId = $user->id;
+            $this->name = $user->name;
+            $this->email = $user->email;
+            $this->gender = $user->gender;
+            $this->status = $user->status;
             $this->isEdit = true;
         }
         $this->modal = true;
@@ -69,7 +74,7 @@ class ManageUser extends Component
     public function closeModal()
     {
         $this->reset([
-            'user',
+            'userId',
             'name',
             'email',
             'gender',
@@ -96,28 +101,27 @@ class ManageUser extends Component
         }
 
         // To update user
-        if ($this->isEdit) {
-        }
-        // To create user
-        else {
-
-            // using `UserTrait::createUser` to send request
+        if ($this->isEdit)
+            $result = $this->editUser($this->userId, $this->only(['name', 'email', 'gender', 'status']));
+        else
             $result = $this->createUser($this->only(['name', 'email', 'gender', 'status']));
 
-            if ($result->failed()) {
-                foreach ($result->json() as $res) {
-                    $this->addError($res['field'], $res['message']);
-                }
+        if ($result->failed()) {
+            // Will return error until all requests are pass
+            foreach ($result->json() as $res) {
+                $this->addError($res['field'], $res['message']);
             }
-
-            $this->closeModal();
-            $this->flash('success', 'Success', [
-                'position' => 'center',
-                'timer' => 3000,
-                'toast' => false,
-                'text' => 'User has been created',
-            ], '/');
         }
+
+        $this->flash('success', 'Success', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+            'timerProgressBar' => true,
+            'text' => 'User has been ' . ($this->isEdit ? 'updated' : 'created'),
+        ], '/');
+        $this->closeModal();
+
     }
 
     public function render()

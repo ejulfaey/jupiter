@@ -23,9 +23,10 @@ trait UserTrait
             ->post(self::$url, $query);
     }
 
-    public function editUser($query)
+    public function editUser($id, $query)
     {
-        // 
+        return Http::withToken(env('GOREST_TOKEN'))
+            ->put(self::$url . '/' . $id, $query);
     }
 
     public function deleteUser($query)
