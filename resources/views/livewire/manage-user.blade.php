@@ -82,7 +82,7 @@
     </div>
     <!-- Create and Edit Modal for user -->
     <div x-cloak x-data x-show="$wire.modal" x-transition tabindex="1" class="absolute inset-0 z-30 w-full h-screen bg-gray-800/80 p-4 flex items-center">
-        <div class="bg-white w-full max-w-xl mx-auto rounded overflow-hidden">
+        <div x-on:click.outside="$wire.set('modal', false)" class="bg-white w-full max-w-xl mx-auto rounded overflow-hidden">
             <div class="px-6 py-4 border-b flex justify-between">
                 <h4 class="grow text-center font-semibold">
                     {{ $isEdit ? 'Update User' : 'Create User' }}
