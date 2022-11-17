@@ -16,7 +16,7 @@
                     </select>
                 </div>
             </div>
-            <button class="px-4 py-1.5 bg-white text-sm text-red-500 flex items-center gap-x-2 font-sans hover:bg-red-100">
+            <button wire:click="openModal()" class="px-3 py-1.5 bg-white text-sm text-red-500 flex items-center gap-x-2 font-sans hover:bg-red-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
                 </svg>
@@ -64,4 +64,68 @@
         </div>
         @endif
     </div>
+    <!-- Create and Edit Modal for user -->
+    <div x-cloak x-data x-show="$wire.modal" x-transition tabindex="1" class="absolute inset-0 z-30 w-full h-screen bg-gray-800/80 p-4 flex items-center">
+        <div class="bg-white w-full max-w-xl mx-auto rounded overflow-hidden">
+            <div class="px-6 py-4 border-b flex justify-between">
+                <h4 class="grow text-center font-semibold">
+                    Create User
+                </h4>
+                <button wire:click="closeModal" class="box-border w-5 h-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-6 max-h-96 overflow-y-auto">
+                <form id="form" wire:submit.prevent="submit">
+                    <div class="grid grid-cols-2 gap-2 md:gap-4 lg:gap-6">
+                        <div class="col-span-2">
+                            <label for="name" class="text-sm text-gray-700 tracking-wide">Name</label>
+                            <input id="name" wire:model="name" type="text" placeholder="Enter name" class="mt-2 w-full block text-sm px-4 py-2 rounded border border-gray-400/50 outline-none @error('name') border-red-500 bg-red-50 @enderror" />
+                            @error('name')<span class="mt-1 text-xs text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="col-span-2">
+                            <label for="email" class="text-sm text-gray-700 tracking-wide">Email Address</label>
+                            <input id="email" wire:model="email" type="text" placeholder="Enter email address" class="mt-2 w-full block text-sm px-4 py-2 rounded border border-gray-400/50 outline-none @error('email') border-red-500 bg-red-50 @enderror" />
+                            @error('email')<span class="mt-1 text-xs text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="email" class="text-sm text-gray-700 tracking-wide">Gender</label>
+                            <div class="flex gap-x-2">
+                                <div class="mt-2 flex items-center mr-4">
+                                    <input wire:model="gender" id="male-radio" type="radio" value="male" name="gender">
+                                    <label for="male-radio" class="ml-2 text-sm dark:text-gray-300">Male</label>
+                                </div>
+                                <div class="mt-2 flex items-center mr-4">
+                                    <input wire:model="gender" id="female-radio" type="radio" value="female" name="gender">
+                                    <label for="female-radio" class="ml-2 text-sm dark:text-gray-300">Female</label>
+                                </div>
+                            </div>
+                            @error('gender')<span class="mt-1 text-xs text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="email" class="text-sm text-gray-700 tracking-wide">Status</label>
+                            <div class="flex gap-x-2">
+                                <div class="mt-2 flex items-center mr-4">
+                                    <input wire:model="status" id="active-radio" type="radio" value="active" name="status">
+                                    <label for="active-radio" class="ml-2 text-sm dark:text-gray-300">Active</label>
+                                </div>
+                                <div class="mt-2 flex items-center mr-4">
+                                    <input wire:model="status" id="inactive-radio" type="radio" value="inactive" name="status">
+                                    <label for="inactive-radio" class="ml-2 text-sm dark:text-gray-300">Inactive</label>
+                                </div>
+                            </div>
+                            @error('status')<span class="mt-1 text-xs text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="px-6 py-4 border-t flex justify-center gap-x-2">
+                <button wire:click="closeModal" type="button" class="px-4 py-2 bg-gray-100 text-sm text-gray-500 rounded hover:bg-gray-200">Cancel</button>
+                <input type="submit" form="form" value="Confirm" class="px-4 py-2 bg-gradient-to-br from-[#8A2387] via-[#E94057] to-[#F27121] text-sm text-white rounded hover:bg-green-700 cursor-pointer" />
+            </div>
+        </div>
+    </div>
+    <!-- End -->
 </div>

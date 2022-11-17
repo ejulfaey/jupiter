@@ -10,15 +10,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireStyles
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </head>
 
-<body class="antialiased bg-white">
+<body class="antialiased bg-white md:relative">
     <div class="flex flex-row h-screen" x-data="{menu1: false}">
         <!-- Sidebar -->
         @include('layouts.sidebar')
         <!-- End Sidebar -->
         <!-- Mobile Nav -->
-        <div x-show="menu1" x-transition x-on:click.outside="menu1 = false" class="p-4 w-72 fixed inset-0 z-10 bg-white h-screen overflow-y-auto shadow-md">
+        <div x-cloak x-show="menu1" x-transition x-on:click.outside="menu1 = false" class="p-4 w-72 fixed inset-0 z-10 bg-white h-screen overflow-y-auto shadow-md">
             <div class="flex flex-col">
                 <div class="box-border h-12 w-12 rounded-sm bg-gray-400 mb-6"></div>
                 <ul class="flex flex-col space-y-4 mb-6">
@@ -70,7 +76,7 @@
             </div>
         </div>
         <!-- Mobile Nav -->
-        <div class="flex-grow flex flex-col">
+        <div class="grow flex flex-col relative md:static">
             <!-- Page Header -->
             @include('layouts.header', ['sublinks' => ['home' => 'Home']])
             <!-- Page Header -->
@@ -80,6 +86,8 @@
         </div>
     </div>
     @livewireScripts
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <x-livewire-alert::scripts />
 </body>
 
 </html>

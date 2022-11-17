@@ -32,7 +32,10 @@
         @endif
         <div class="box-border w-full h-32 flex justify-center items-center gap-x-4">
             <img class="w-auto h-16" src="/jupiter-alt-512.png" alt="logo">
-            <h2 class="text-xl font-semibold font-serif text-white">Jupiter</h2>
+            <div class="text-white">
+                <h2 class="text-xl font-semibold font-serif">Jupiter</h2>
+                <p class="text-xs">Lorem ipsum dolor sit amet consec adipisicing.</p>
+            </div>
         </div>
     </div>
 </div>
