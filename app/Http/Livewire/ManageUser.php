@@ -12,7 +12,7 @@ class ManageUser extends Component
     use UserTrait, LivewireAlert;
 
     public $users = [];
-    public $perPage = 20;
+    public $perPage = 10;
     public $search;
     public $modal = false;
     public $isEdit = false;

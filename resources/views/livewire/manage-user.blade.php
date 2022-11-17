@@ -1,22 +1,23 @@
 <div class="p-4 md:p-6 lg:p-8 flex-grow overflow-y-auto bg-gradient-to-br from-gray-50 to-gray-200">
     <div class="space-y-6">
         <h3 class="text-xl font-semibold text-gray-700 tracking-wide">Manage User</h3>
-        <div class="flex justify-between items-end">
-            <div class="flex items-center gap-x-4">
-                <div>
-                    <label for="search" class="text-xs text-gray-700 tracking-wide">Search</label>
-                    <input id="search" wire:model="search" type="text" placeholder="Search by name or email" class="mt-2 block text-sm w-80 px-4 py-2 border outline-none" />
+        <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-2 md:gap-0">
+            <div class="flex items-center gap-2 md:gap-x-4">
+                <div class="grow">
+                    <label for="search" class="text-xs text-gray-700 tracking-wide font-medium">Search</label>
+                    <input id="search" wire:model="search" type="text" placeholder="Search by name or email" class="mt-2 block text-sm w-full md:w-80 px-4 py-2 outline-none" />
                 </div>
                 <div>
-                    <label for="perPage" class="text-xs text-gray-700 tracking-wide">No. of item</label>
+                    <label for="perPage" class="text-xs text-gray-700 tracking-wide font-medium">No. of item</label>
                     <select id="perPage" wire:model="perPage" class="mt-2 block px-4 py-2 text-sm">
+                        <option value="10">10</option>
                         <option value="20">20</option>
                         <option value="50">50</option>
                         <option value="100">100</option>
                     </select>
                 </div>
             </div>
-            <button wire:click="openModal()" class="px-4 py-2 bg-white text-sm text-red-500 font-medium flex items-center gap-x-2 font-sans hover:bg-red-100">
+            <button wire:click="openModal()" class="px-4 py-2 bg-white text-sm text-red-500 font-medium flex justify-center items-center gap-x-2 font-sans hover:bg-red-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
                 </svg>
@@ -37,7 +38,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-4 md:gap-6">
             @foreach($users as $user)
             <div class="relative p-6 bg-white rounded cursor-pointer hover:bg-red-100 group">
-                <div class="absolute top-2 right-2 z-30 flex items-center gap-x-2 invisible group-hover:visible">
+                <div class="absolute top-2 right-2 z-30 flex items-center gap-x-2 lg:invisible lg:group-hover:visible">
                     <button wire:click="openModal('{{ json_encode($user) }}')" class="box-border w-6 h-6 bg-white p-1 rounded-sm text-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -85,19 +86,19 @@
             </div>
             <div class="p-6 max-h-96 overflow-y-auto">
                 <form id="form" wire:submit.prevent="submit">
-                    <div class="grid grid-cols-2 gap-2 md:gap-4 lg:gap-6">
+                    <div class="grid grid-cols-2 gap-6">
                         <div class="col-span-2">
-                            <label for="name" class="text-sm text-gray-700 tracking-wide">Name</label>
+                            <label for="name" class="text-sm text-gray-700 tracking-wide font-medium">Name</label>
                             <input id="name" wire:model="name" type="text" placeholder="Enter name" class="mt-2 w-full block text-sm px-4 py-2 rounded border border-gray-400/50 outline-none @error('name') border-red-500 bg-red-50 @enderror" />
                             @error('name')<span class="mt-1 text-xs text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-span-2">
-                            <label for="email" class="text-sm text-gray-700 tracking-wide">Email Address</label>
+                            <label for="email" class="text-sm text-gray-700 tracking-wide font-medium">Email Address</label>
                             <input id="email" wire:model="email" type="text" placeholder="Enter email address" class="mt-2 w-full block text-sm px-4 py-2 rounded border border-gray-400/50 outline-none @error('email') border-red-500 bg-red-50 @enderror" />
                             @error('email')<span class="mt-1 text-xs text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="flex flex-col">
-                            <label for="email" class="text-sm text-gray-700 tracking-wide">Gender</label>
+                            <label for="email" class="text-sm text-gray-700 tracking-wide font-medium">Gender</label>
                             <div class="flex gap-x-2">
                                 <div class="mt-2 flex items-center mr-4">
                                     <input wire:model="gender" id="male-radio" type="radio" value="male" name="gender">
@@ -111,7 +112,7 @@
                             @error('gender')<span class="mt-1 text-xs text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="flex flex-col">
-                            <label for="email" class="text-sm text-gray-700 tracking-wide">Status</label>
+                            <label for="email" class="text-sm text-gray-700 tracking-wide font-medium">Status</label>
                             <div class="flex gap-x-2">
                                 <div class="mt-2 flex items-center mr-4">
                                     <input wire:model="status" id="active-radio" type="radio" value="active" name="status">

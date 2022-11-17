@@ -9,7 +9,7 @@ trait UserTrait
 
     public static $url = 'https://gorest.co.in/public/v2/users';
 
-    public function getUser($query = []): array
+    public function getUser($query = [])
     {
         return Http::withToken(env('GOREST_TOKEN'))
             ->get(self::$url, $query)
