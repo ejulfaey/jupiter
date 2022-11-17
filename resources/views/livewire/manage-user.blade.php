@@ -3,10 +3,12 @@
         <h3 class="text-xl font-semibold text-gray-700 tracking-wide">Manage User</h3>
         <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-2 md:gap-0">
             <div class="flex items-center gap-2 md:gap-x-4">
+                <!-- Search Input -->
                 <div class="grow">
                     <label for="search" class="text-xs text-gray-700 tracking-wide font-medium">Search</label>
                     <input id="search" wire:model.debounce.1000ms="search" type="text" placeholder="Search by name or email" class="mt-2 block text-sm w-full md:w-80 px-4 py-2 outline-none" />
                 </div>
+                <!-- No. of item Input -->
                 <div>
                     <label for="perPage" class="text-xs text-gray-700 tracking-wide font-medium">No. of item</label>
                     <select id="perPage" wire:model="perPage" class="mt-2 block px-4 py-2 text-sm">
@@ -17,6 +19,7 @@
                     </select>
                 </div>
             </div>
+            <!-- Create Button -->
             <button wire:click="openModal()" class="px-4 py-2 bg-white text-sm text-red-500 font-medium flex justify-center items-center gap-x-2 font-sans hover:bg-red-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
@@ -34,7 +37,7 @@
                 </li>
             </ul>
         </div>
-        <div wire:loading.flex wire:target="search, perPage, submit" class="h-32 justify-center items-center gap-x-4 text-sm">
+        <div wire:loading.flex wire:target="search, perPage, submit" class="bg-white w-full h-32 justify-center items-center gap-x-4 text-sm rounded">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 animate-spin">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
             </svg>
@@ -136,7 +139,7 @@
             </div>
             <div class="px-6 py-4 border-t flex justify-center gap-x-2">
                 <button wire:click="closeModal" type="button" class="px-4 py-2 bg-gray-100 text-sm text-gray-500 rounded hover:bg-gray-200">Cancel</button>
-                <input type="submit" form="form" value="Confirm" class="px-4 py-2 bg-blue-500 text-sm text-white rounded hover:bg-green-700 cursor-pointer" />
+                <input type="submit" form="form" value="Confirm" class="px-4 py-2 bg-rose-500 text-sm text-white rounded hover:bg-rose-700 cursor-pointer" />
             </div>
         </div>
     </div>
