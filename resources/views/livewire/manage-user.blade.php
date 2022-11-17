@@ -5,7 +5,7 @@
             <div class="flex items-center gap-2 md:gap-x-4">
                 <div class="grow">
                     <label for="search" class="text-xs text-gray-700 tracking-wide font-medium">Search</label>
-                    <input id="search" wire:model="search" type="text" placeholder="Search by name or email" class="mt-2 block text-sm w-full md:w-80 px-4 py-2 outline-none" />
+                    <input id="search" wire:model.debounce.1000ms="search" type="text" placeholder="Search by name or email" class="mt-2 block text-sm w-full md:w-80 px-4 py-2 outline-none" />
                 </div>
                 <div>
                     <label for="perPage" class="text-xs text-gray-700 tracking-wide font-medium">No. of item</label>
@@ -34,8 +34,14 @@
                 </li>
             </ul>
         </div>
+        <div wire:loading.flex wire:target="search, perPage, submit" class="h-32 justify-center items-center gap-x-4 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 animate-spin">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+            Loading...
+        </div>
         @if(count($users) > 0)
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-4 md:gap-6">
+        <div wire:loading.remove wire:target="search, perPage, submit" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-4 md:gap-6">
             @foreach($users as $user)
             <div class="relative p-6 bg-white rounded cursor-pointer hover:bg-red-100 group">
                 <div class="absolute top-2 right-2 z-30 flex items-center gap-x-2 lg:invisible lg:group-hover:visible">

@@ -34,14 +34,20 @@ class ManageUser extends Component
             'per_page' => $this->perPage
         ];
         $this->users = $this->getUser($query);
-        // $this->users = [];
     }
 
     public function updatedPerPage($val)
     {
-        $query = [
-            'per_page' => $val
-        ];
+        if ($this->search) {
+            $query = [
+                'name' => $this->search,
+                'email' => $this->search,
+            ];
+        } else {
+            $query = [
+                'per_page' => $val
+            ];
+        }
 
         $this->users = $this->getUser($query);
     }
