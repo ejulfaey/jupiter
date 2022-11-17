@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Livewire\ManageUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'index']);
+Route::name('home')->get('/', ManageUser::class);
+// Route::name('home')->get('/', [HomeController::class, 'index']);
+// Route::name('home1')->get('/home1', [HomeController::class, 'index']);
+// Route::get('/post', [PostController::class, 'index']);
