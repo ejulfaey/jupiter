@@ -24,6 +24,10 @@ class ManageUser extends Component
     public $gender;
     public $status;
 
+    protected $listeners = [
+        'confirmed'
+    ];
+
     public function mount()
     {
         $query = [
@@ -121,7 +125,47 @@ class ManageUser extends Component
             'text' => 'User has been ' . ($this->isEdit ? 'updated' : 'created'),
         ], '/');
         $this->closeModal();
+    }
 
+    public function alertToDelete($id)
+    {
+        $this->alert('warning', 'Alert!', [
+            'position' => 'center',
+            'timer' => '',
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => '',
+            'showCancelButton' => true,
+            'onDismissed' => '',
+            'text' => 'Confirm to delete this user?',
+            'confirmButtonText' => 'Confirm',
+            'onConfirmed' => 'confirmed',
+            'data' => [$id],
+        ]);
+    }
+
+    public function confirmed($data)
+    {
+        // $data['data'][0] = $userId;
+        $result = $this->deleteUser($data['data'][0]);
+
+        if ($result->failed()) {
+            $this->alert('error', 'Failed!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'text' => 'Something went error',
+                'timerProgressBar' => true,
+            ]);
+        } else {
+            $this->flash('success', 'Success', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'timerProgressBar' => true,
+                'text' => 'User has been deleted',
+            ], '/');
+        }
     }
 
     public function render()

@@ -29,8 +29,9 @@ trait UserTrait
             ->put(self::$url . '/' . $id, $query);
     }
 
-    public function deleteUser($query)
+    public function deleteUser($id)
     {
-        // 
+        return Http::withToken(env('GOREST_TOKEN'))
+            ->delete(self::$url . '/' . $id);
     }
 }

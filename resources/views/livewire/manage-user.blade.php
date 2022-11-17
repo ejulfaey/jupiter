@@ -36,16 +36,28 @@
         @if(count($users) > 0)
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-4 md:gap-6">
             @foreach($users as $user)
-            <div wire:click="openModal('{{ json_encode($user) }}')" class="p-6 bg-white rounded cursor-pointer hover:bg-red-100">
+            <div class="relative p-6 bg-white rounded cursor-pointer hover:bg-red-100 group">
+                <div class="absolute top-2 right-2 z-30 flex items-center gap-x-2 invisible group-hover:visible">
+                    <button wire:click="openModal('{{ json_encode($user) }}')" class="box-border w-6 h-6 bg-white p-1 rounded-sm text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                    </button>
+                    <button wire:click="alertToDelete('{{ $user['id'] }}')" class="box-border w-6 h-6 bg-white p-1 rounded-sm text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                </div>
                 <div class="flex items-center gap-x-4">
                     <div class="relative">
-                        <div class="w-12 h-12 rounded-full font-semibold bg-red-100 text-red-500 flex items-center justify-center uppercase">
+                        <div class="w-12 h-12 rounded-full font-semibold bg-red-100 text-red-500 flex items-center justify-center uppercase group-hover:bg-white">
                             {{ $user['gender'][0] }}
                         </div>
                         <div @class(['absolute bottom-0 right-0 z-10 w-3 h-3 rounded-full', 'bg-orange-500'=> $user['status'] == 'inactive', 'bg-green-500' => $user['status'] == 'active' ])"></div>
                     </div>
                     <div class="flex flex-col items-start max-w-full">
-                        <h4 class="mt-1 text-gray-800">{{ $user['name'] }}</h4>
+                        <h4 class="mt-1 text-gray-800 font-semibold">{{ $user['name'] }}</h4>
                         <p class="text-xs text-gray-600">{{ $user['email'] }}</p>
                     </div>
                 </div>
@@ -117,7 +129,7 @@
             </div>
             <div class="px-6 py-4 border-t flex justify-center gap-x-2">
                 <button wire:click="closeModal" type="button" class="px-4 py-2 bg-gray-100 text-sm text-gray-500 rounded hover:bg-gray-200">Cancel</button>
-                <input type="submit" form="form" value="Confirm" class="px-4 py-2 bg-gradient-to-br from-[#8A2387] via-[#E94057] to-[#F27121] text-sm text-white rounded hover:bg-green-700 cursor-pointer" />
+                <input type="submit" form="form" value="Confirm" class="px-4 py-2 bg-blue-500 text-sm text-white rounded hover:bg-green-700 cursor-pointer" />
             </div>
         </div>
     </div>
