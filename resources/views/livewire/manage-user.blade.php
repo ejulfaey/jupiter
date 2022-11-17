@@ -44,7 +44,7 @@
             Loading...
         </div>
         @if(count($users) > 0)
-        <div wire:loading.remove wire:target="search, perPage, submit" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-4 md:gap-6">
+        <div wire:loading.remove wire:target="search, perPage, submit" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-0 gap-y-4 md:gap-6">
             @foreach($users as $user)
             <div class="relative p-6 bg-white rounded cursor-pointer hover:bg-red-100 group">
                 <div class="absolute top-2 right-2 z-30 flex items-center gap-x-2 lg:invisible lg:group-hover:visible">
