@@ -20,8 +20,9 @@
 3. Open this project with your `terminal` or `command prompt`.(Make sure you are in the right directory).
 4. Run this command `composer install`.
 5. Copy this file `.env.example` and name it as `.env`.
-6. Run this command `php artisan key:generate`.
-7. Lastly, you can serve the project using this command `php artisan server`.
+6. Change this `GOREST_TOKEN="your_gorest_token"` with your token.
+7. Run this command `php artisan key:generate`.
+8. Lastly, you can serve the project using this command `php artisan server`.
 
 
 
