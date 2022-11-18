@@ -2,7 +2,7 @@
 
 ![Jupiter](https://raw.githubusercontent.com/ejulfaey/jupiter/main/public/example-1.png?raw=true)
 
-[Jupiter] is a dashboard for user management using [GoREST] Rest API. This platform has been developed using Tall stack [TailwindCSS], [AlpineJS], [Laravel], and [Livewire].
+[Jupiter] is a dashboard for user management using [GoREST] Rest API. This platform has been developed using TALL stack [TailwindCSS], [AlpineJS], [Laravel], and [Livewire].
 
 
 ### Features
