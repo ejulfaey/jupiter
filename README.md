@@ -22,7 +22,7 @@
 5. Copy this file `.env.example` and name it as `.env`.
 6. Change this `GOREST_TOKEN="your_gorest_token"` with your token.
 7. Run this command `php artisan key:generate`.
-8. Lastly, you can serve the project using this command `php artisan server`.
+8. Lastly, you can serve the project using this command `php artisan serve`.
 
 
 
