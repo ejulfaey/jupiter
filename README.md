@@ -29,5 +29,5 @@
 [GoREST]: <https://gorest.co.in>
 [TailwindCSS]: <https://tailwindcss.com>
 [AlpineJS]: <https://alpinejs.dev/>
-[Jupiter]: <https://jupiter.dzulfarizan.com>
+[Jupiter]: <http://jupiter.cst7ioee8e-95m32xpxl6rv.p.temp-site.link/>
 [Laravel]: <https://laravel.com>
