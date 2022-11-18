@@ -2,15 +2,15 @@
 
 ![Jupiter](https://raw.githubusercontent.com/ejulfaey/jupiter/main/public/example-1.png?raw=true)
 
-[Jupiter] is a dashboard for user management using [GoREST] Rest API. This platform has been developed using [Laravel], [TailwindCSS], and [AlpineJS].
+[Jupiter] is a dashboard for user management using [GoREST] Rest API. This platform has been developed using Tall stack [TailwindCSS], [AlpineJS], [Laravel], and [Livewire].
 
 
 ### Features
-- Create new user
-- Update existsing user
-- Search user by name or email
-- Listing record of user
-- Delete user
+- CRUD functionality
+- Searching functionality
+- Display based on number of item
+- Input Validation
+- Responsiveness
 
 ### Installation
 1. Install [Laravel] via composer.
@@ -25,9 +25,9 @@
 8. Lastly, you can serve the project using this command `php artisan serve`.
 
 
-
 [GoREST]: <https://gorest.co.in>
 [TailwindCSS]: <https://tailwindcss.com>
 [AlpineJS]: <https://alpinejs.dev/>
 [Jupiter]: <http://jupiter.cst7ioee8e-95m32xpxl6rv.p.temp-site.link/>
 [Laravel]: <https://laravel.com>
+[Livewire]: <https://laravel-livewire.com>
