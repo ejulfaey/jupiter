@@ -16,6 +16,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::name('home')->get('/', ManageUser::class);
-// Route::name('home')->get('/', [HomeController::class, 'index']);
-// Route::name('home1')->get('/home1', [HomeController::class, 'index']);
-// Route::get('/post', [PostController::class, 'index']);
