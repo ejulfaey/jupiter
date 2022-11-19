@@ -17,7 +17,6 @@ class ManageUser extends Component
     public $modal = false;
     public $isEdit = false;
 
-    // Form parameter
     public $userId;
     public $name;
     public $email;

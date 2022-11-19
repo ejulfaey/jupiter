@@ -81,9 +81,10 @@
             @include('layouts.header', ['sublinks' => ['home' => 'Home']])
             <!-- End Page Header -->
             {{ $content }}
-
+            <!-- Page Footer -->
             @include('layouts.footer')
-        </div>
+            <!-- End Page Footer -->
+            </div>
     </div>
     @livewireScripts
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
