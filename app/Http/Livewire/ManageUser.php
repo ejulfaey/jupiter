@@ -33,6 +33,8 @@ class ManageUser extends Component
         $query = [
             'per_page' => $this->perPage
         ];
+
+        // trigger UserTrait::getUser in 'app/Traits/UserTrait'
         $this->users = $this->getUser($query);
     }
 
@@ -49,6 +51,7 @@ class ManageUser extends Component
             ];
         }
 
+        // trigger UserTrait::getUser in 'app/Traits/UserTrait'
         $this->users = $this->getUser($query);
     }
 
@@ -64,6 +67,7 @@ class ManageUser extends Component
                 'per_page' => $this->perPage
             ];
 
+        // trigger UserTrait::getUser in 'app/Traits/UserTrait'
         $this->users = $this->getUser($query);
     }
 
@@ -176,6 +180,7 @@ class ManageUser extends Component
 
     public function render()
     {
+        // It will call 'resources/views/livewire/manage-user.blade.php'
         return view('livewire.manage-user')
             ->slot('content');
     }

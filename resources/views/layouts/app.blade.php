@@ -75,11 +75,11 @@
                 </ul>
             </div>
         </div>
-        <!-- Mobile Nav -->
+        <!--End  Mobile Nav -->
         <div class="grow flex flex-col relative md:static">
             <!-- Page Header -->
             @include('layouts.header', ['sublinks' => ['home' => 'Home']])
-            <!-- Page Header -->
+            <!-- End Page Header -->
             {{ $content }}
 
             @include('layouts.footer')
